@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(LSCApp());
 }
 
-class MyApp extends StatelessWidget {
+class LSCApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
