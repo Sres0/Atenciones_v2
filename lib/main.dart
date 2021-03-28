@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:atenciones_v2/screens/main_screen.dart';
-import 'package:atenciones_v2/screens/health_appointments.dart';
+import 'package:atenciones_v2/screens/health_appointments_main.dart';
 
 void main() {
   runApp(LSCApp());

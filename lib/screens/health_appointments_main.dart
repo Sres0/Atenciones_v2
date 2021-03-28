@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 
 class HealthAppointments extends StatefulWidget {
-  HealthAppointments({Key key, this.title}) : super(key: key);
   static const id = 'my_homepage';
-
-  final String title;
 
   @override
   _HealthAppointmentsState createState() => _HealthAppointmentsState();
@@ -23,7 +20,7 @@ class _HealthAppointmentsState extends State<HealthAppointments> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        title: Text('hi'),
       ),
       body: Center(
         child: Column(
@@ -42,7 +39,7 @@ class _HealthAppointmentsState extends State<HealthAppointments> {
       floatingActionButton: FloatingActionButton(
           onPressed: _incrementCounter,
           tooltip: 'Increment',
-          child: Icon(Icons.lock_clock)),
+          child: Icon(Icons.check)),
     );
   }
 }
