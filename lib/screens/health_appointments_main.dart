@@ -6,6 +6,7 @@ import 'package:atenciones_v2/constants/constants.dart';
 import 'package:atenciones_v2/helpers/default_appbar.dart';
 import 'package:atenciones_v2/models/appointment_model.dart';
 import 'package:atenciones_v2/constants/gif_bank.dart';
+import 'package:atenciones_v2/components/gif_and_btn_container.dart';
 
 class HealthAppointments extends StatefulWidget {
   static const id = 'health_appointments_main';
@@ -20,9 +21,10 @@ class _HealthAppointmentsState extends State<HealthAppointments>
 
   List<Appointment> _presentAppointments = presentAppointments;
   List<Appointment> _pastAppointments = pastAppointments;
+  List<Appointment> renderList = [];
 
-  String currentGif = 'registrarse_nuevo';
-  String gifPath = '';
+  String currentGif = 'gif_prueba_inicial';
+  String gifPath = ''; //CHECK THIS
   GifController controller;
 
   bool selectedBtn = false;
@@ -39,10 +41,13 @@ class _HealthAppointmentsState extends State<HealthAppointments>
     controller.value = 0;
 
     GifBank().gifs.forEach((gif) {
+      // if (gifToPlay == 'odontologia') {
       if (gifToPlay == gif.name) {
+        print('HOLA');
         frameNum = gif.frames - 1;
 
         setState(() {
+          // currentGif = 'odontologia';
           currentGif = gif.name;
           gifPath = gif.image(gif.name, gif.frames);
         });
@@ -56,18 +61,31 @@ class _HealthAppointmentsState extends State<HealthAppointments>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // backgroundColor: kBackgroundColor,
       backgroundColor: kLightGrey,
       appBar: defaultAppBar('Atenciones', true),
       body: Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
             Text(
               '${_presentAppointments[_appointmentId].type} en ${_pastAppointments[0].place}',
             ),
-            Text(
-              '$_appointmentId',
-              style: Theme.of(context).textTheme.headline4,
+            ElevatedButton(
+              onPressed: () {
+                setState(() {
+                  playGif('odontologia');
+                });
+              },
+              child: Text(
+                'odontología general',
+              ),
+            ),
+            GifAndBtnContainer(
+              controller: controller,
+              gif: gifPath,
+              isVisible: true,
+              onTap: () {},
             ),
           ],
         ),

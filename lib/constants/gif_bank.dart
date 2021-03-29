@@ -3,7 +3,7 @@ import 'package:atenciones_v2/models/gif.dart';
 class GifBank {
   List<Gif> gifs = [
     Gif(
-      name: 'apellidos',
+      name: 'medicina_general',
       frames: 15,
     ),
     Gif(
@@ -15,7 +15,7 @@ class GifBank {
       frames: 26,
     ),
     Gif(
-      name: 'celular',
+      name: 'gif_prueba_inicial',
       frames: 17,
     ),
     Gif(
@@ -79,7 +79,7 @@ class GifBank {
       frames: 31,
     ),
     Gif(
-      name: 'ingresar_documento',
+      name: 'odontologia',
       frames: 17,
     ),
     Gif(
