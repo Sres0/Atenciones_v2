@@ -17,3 +17,11 @@ class Appointment {
     @required this.time,
   });
 }
+
+appointmentName(String type) {
+  if (type == 'odontologia_general') {
+    return 'Odontología general';
+  } else if (type == 'medicina_general') {
+    return 'Medicina general';
+  }
+}

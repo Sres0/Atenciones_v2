@@ -7,25 +7,31 @@ class GifBank {
       frames: 15,
     ),
     Gif(
-      name: 'cambiar_contrasena',
-      frames: 20,
-    ),
-    Gif(
-      name: 'campos_resaltados_obligatorios',
-      frames: 26,
-    ),
-    Gif(
-      name: 'gif_prueba_inicial',
+      name: 'odontologia_general',
       frames: 17,
     ),
     Gif(
-      name: 'confirmar_contrasena',
+      name: 'citas_pendientes',
+      frames: 20,
+    ),
+    Gif(
+      name: 'citas_pasadas',
+      frames: 26,
+    ),
+    Gif(
+      name: 'anadir_cita',
+      frames: 17,
+    ),
+    Gif(
+      name: 'borrar_cita',
       frames: 31,
     ),
     Gif(
-      name: 'contrasena_debe_tener_4_numeros',
+      name: 'sin_citas',
       frames: 29,
     ),
+
+    //OTHERS
     Gif(
       name: 'contrasena_invalida',
       frames: 21,
@@ -77,10 +83,6 @@ class GifBank {
     Gif(
       name: 'ingresar_contrasena',
       frames: 31,
-    ),
-    Gif(
-      name: 'odontologia',
-      frames: 17,
     ),
     Gif(
       name: 'iniciar_sesion',
