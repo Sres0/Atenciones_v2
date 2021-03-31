@@ -2,13 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_gifimage/flutter_gifimage.dart';
 
-import 'package:atenciones_v2/models/appointment_list.dart';
 import 'package:atenciones_v2/constants/constants.dart';
-import 'package:atenciones_v2/helpers/default_appbar.dart';
-import 'package:atenciones_v2/models/appointment.dart';
 import 'package:atenciones_v2/constants/gif_bank.dart';
+import 'package:atenciones_v2/models/appointment_list.dart';
+import 'package:atenciones_v2/models/appointment.dart';
 import 'package:atenciones_v2/components/gif_and_btn_container.dart';
 import 'package:atenciones_v2/components/app_button.dart';
+import 'package:atenciones_v2/helpers/default_appbar.dart';
+import 'package:atenciones_v2/screens/new_appointment.dart';
 
 class HealthAppointments extends StatefulWidget {
   static const id = 'health_appointments_main';
@@ -25,7 +26,7 @@ class _HealthAppointmentsState extends State<HealthAppointments>
     //IMPORT
     Appointment(
       id: 0,
-      type: 'medicina_general',
+      type: 'enfermeria',
       place: 'HGM',
       additionalInformation: ':)',
       date: DateTime.now().add(Duration(hours: 2)),
@@ -159,7 +160,13 @@ class _HealthAppointmentsState extends State<HealthAppointments>
                     },
                   );
                 },
-                onDoublePress: () {},
+                onDoublePress: () {
+                  // Navigator.pushNamed(context, NewAppointment.id);
+                  Navigator.pushNamed(
+                    context,
+                    NewAppointment.id,
+                  );
+                },
               ),
               AppointmentList(
                 _deleteAppointment,

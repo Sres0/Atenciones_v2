@@ -23,5 +23,7 @@ appointmentName(String type) {
     return 'Odontología general';
   } else if (type == 'medicina_general') {
     return 'Medicina general';
+  } else if (type == 'enfermeria') {
+    return 'Enfermería';
   }
 }

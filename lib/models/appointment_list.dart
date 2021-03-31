@@ -4,6 +4,7 @@ import 'package:intl/intl.dart';
 
 // import 'package:atenciones_v2/screens/health_appointments_main.dart';
 import 'package:atenciones_v2/models/appointment.dart';
+import 'package:atenciones_v2/models/appointment_type.dart';
 
 class AppointmentList extends StatefulWidget {
   final Function deleteAppointment;
@@ -117,8 +118,8 @@ class _AppointmentCardState extends State<AppointmentCard> {
           leading: CircleAvatar(
             radius: 30,
             backgroundColor: Colors.grey,
-            // backgroundImage:
-            //     AssetImage(),
+            backgroundImage: AssetImage(
+                'images/${AppointmentType().image(widget.renderList[widget.index].type)}'),
           ),
           title: Text(
             DateFormat.yMd().format(widget.renderList[widget.index].date),
