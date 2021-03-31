@@ -30,12 +30,12 @@ class GifBank {
       name: 'sin_citas',
       frames: 29,
     ),
-
-    //OTHERS
     Gif(
-      name: 'contrasena_invalida',
+      name: 'enfermeria',
       frames: 21,
     ),
+
+    //OTHERS
     Gif(
       name: 'contrasenas_no_coinciden',
       frames: 31,

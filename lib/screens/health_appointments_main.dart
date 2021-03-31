@@ -27,7 +27,7 @@ class _HealthAppointmentsState extends State<HealthAppointments>
     Appointment(
       id: 0,
       type: 'enfermeria',
-      place: 'HGM',
+      place: 'CES Sabaneta',
       additionalInformation: ':)',
       date: DateTime.now().add(Duration(hours: 2)),
       time: TimeOfDay.now(),
@@ -46,7 +46,7 @@ class _HealthAppointmentsState extends State<HealthAppointments>
     Appointment(
       id: 1,
       type: 'medicina_general',
-      place: 'CES Sabaneta',
+      place: 'HGM',
       additionalInformation: ':)',
       date: DateTime.now().subtract(Duration(days: 12)),
       time: TimeOfDay.now(),
@@ -54,7 +54,7 @@ class _HealthAppointmentsState extends State<HealthAppointments>
     Appointment(
       id: 3,
       type: 'odontologia_general',
-      place: 'CES Sabaneta',
+      place: 'SVF',
       additionalInformation: ':)',
       date: DateTime.now().subtract(Duration(days: 4)),
       time: TimeOfDay.now(),

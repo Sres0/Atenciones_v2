@@ -19,7 +19,7 @@ class NewAppointment extends StatefulWidget {
 
 class _NewAppointmentState extends State<NewAppointment>
     with TickerProviderStateMixin {
-  String currentGif = 'citas_pendientes';
+  String currentGif = 'anadir_cita';
   String gifPath = '';
   GifController controller;
 
