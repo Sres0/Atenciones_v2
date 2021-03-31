@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:atenciones_v2/constants/appointment_bank.dart';
+
 class Appointment {
   final int id;
   final String place;
@@ -19,11 +21,17 @@ class Appointment {
 }
 
 appointmentName(String type) {
-  if (type == 'odontologia_general') {
-    return 'Odontología general';
-  } else if (type == 'medicina_general') {
-    return 'Medicina general';
-  } else if (type == 'enfermeria') {
-    return 'Enfermería';
+  for (var t in AppointmentBank().appointmentTypes) {
+    if (t.type == type) {
+      return t.name;
+    }
+  }
+}
+
+appointmentNameToType(String name) {
+  for (var t in AppointmentBank().appointmentTypes) {
+    if (t.name == name) {
+      return t.type;
+    }
   }
 }

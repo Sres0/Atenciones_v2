@@ -13,6 +13,8 @@ class AppointmentDateAndTime extends StatefulWidget {
     @required this.pickerFocusNode,
     @required this.isEnabled,
     @required this.disableAppointmentDateAndTime,
+    @required this.appointmentDate,
+    @required this.appointmentTime,
   });
 
   final String hintTxt;
@@ -20,6 +22,8 @@ class AppointmentDateAndTime extends StatefulWidget {
   final FocusNode pickerFocusNode;
   final bool isEnabled;
   final Function disableAppointmentDateAndTime;
+  final DateTime appointmentDate;
+  final TimeOfDay appointmentTime;
 
   @override
   _AppointmentDateAndTimeState createState() => _AppointmentDateAndTimeState();
@@ -28,10 +32,11 @@ class AppointmentDateAndTime extends StatefulWidget {
 class _AppointmentDateAndTimeState extends State<AppointmentDateAndTime> {
   TextEditingController textController;
   String hintTxt;
-  DateTime appointmentDate;
   FocusNode pickerFocusNode;
   bool isEnabled;
   Function disableAppointmentDateAndTime;
+  DateTime appointmentDate;
+  TimeOfDay appointmentTime;
 
   var dateFormatter = new DateFormat('yMd');
   String selectedDate;
@@ -40,6 +45,8 @@ class _AppointmentDateAndTimeState extends State<AppointmentDateAndTime> {
   void initState() {
     hintTxt = widget.hintTxt;
     textController = widget.textController;
+    appointmentDate = widget.appointmentDate;
+    appointmentTime = widget.appointmentTime;
     disableAppointmentDateAndTime = widget.disableAppointmentDateAndTime;
     super.initState();
   }
@@ -49,16 +56,30 @@ class _AppointmentDateAndTimeState extends State<AppointmentDateAndTime> {
         context: context,
         initialDate: DateTime.now(),
         firstDate: DateTime(1900),
-        lastDate: DateTime.now());
-    if (pickedDate != null && pickedDate != DateTime.now()) {
+        lastDate: DateTime(2200));
+    if (pickedDate != null) {
       setState(() {
         appointmentDate = pickedDate;
-        selectedDate = dateFormatter.format(appointmentDate);
+        selectedDate = dateFormatter.format(pickedDate);
         textController.value = TextEditingValue(
           text: selectedDate.toString(),
         );
       });
     }
+
+    final TimeOfDay pickedTime =
+        await showTimePicker(context: context, initialTime: TimeOfDay.now());
+    if (pickedTime == null) {
+      return;
+    }
+    setState(() {
+      appointmentTime = pickedTime;
+      textController.value = TextEditingValue(
+        text: dateFormatter.format(pickedDate) +
+            ' - ' +
+            appointmentTime.format(context).toString(),
+      );
+    });
   }
 
   CupertinoDatePicker iosAppointmentDateAndTime() {

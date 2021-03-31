@@ -6,6 +6,7 @@ import 'package:atenciones_v2/constants/constants.dart';
 import 'package:atenciones_v2/constants/gif_bank.dart';
 import 'package:atenciones_v2/models/appointment_list.dart';
 import 'package:atenciones_v2/models/appointment.dart';
+import 'package:atenciones_v2/models/past_and_present_appointments.dart';
 import 'package:atenciones_v2/components/gif_and_btn_container.dart';
 import 'package:atenciones_v2/components/app_button.dart';
 import 'package:atenciones_v2/helpers/default_appbar.dart';
@@ -22,68 +23,6 @@ class _HealthAppointmentsState extends State<HealthAppointments>
     with TickerProviderStateMixin {
   int _bottomNavigationIndex = 0;
 
-  List<Appointment> presentAppointments = [
-    //IMPORT
-    Appointment(
-      id: 0,
-      type: 'enfermeria',
-      place: 'CES Sabaneta',
-      additionalInformation: ':)',
-      date: DateTime.now().add(Duration(hours: 2)),
-      time: TimeOfDay.now(),
-    ),
-    Appointment(
-      id: 1,
-      type: 'odontologia_general',
-      place: 'HGM',
-      additionalInformation: ':)',
-      date: DateTime.now().add(Duration(days: 11)),
-      time: TimeOfDay.now(),
-    ),
-    Appointment(
-      id: 2,
-      type: 'medicina_general',
-      place: 'HPTU',
-      additionalInformation: ':)',
-      date: DateTime.now().add(Duration(hours: 2)),
-      time: TimeOfDay.now(),
-    ),
-    Appointment(
-      id: 3,
-      type: 'odontologia_general',
-      place: 'HGM',
-      additionalInformation: ':)',
-      date: DateTime.now().add(Duration(days: 11)),
-      time: TimeOfDay.now(),
-    ),
-    Appointment(
-      id: 4,
-      type: 'odontologia_general',
-      place: 'HGM',
-      additionalInformation: ':)',
-      date: DateTime.now().add(Duration(days: 11)),
-      time: TimeOfDay.now(),
-    ),
-  ];
-  List<Appointment> pastAppointments = [
-    //IMPORT
-    Appointment(
-      id: 5,
-      type: 'medicina_general',
-      place: 'HGM',
-      additionalInformation: ':)',
-      date: DateTime.now().subtract(Duration(days: 12)),
-      time: TimeOfDay.now(),
-    ),
-    Appointment(
-      id: 6,
-      type: 'odontologia_general',
-      place: 'SVF',
-      additionalInformation: ':)',
-      date: DateTime.now().subtract(Duration(days: 4)),
-      time: TimeOfDay.now(),
-    ),
-  ];
   List<Appointment> renderList = [];
 
   String currentGif = 'citas_pendientes';
