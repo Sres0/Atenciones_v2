@@ -30,10 +30,11 @@ class _AppointmentListState extends State<AppointmentList> {
         vertical: 3,
         horizontal: 8,
       ),
-      height: MediaQuery.of(context).size.height * 0.4,
+      height: MediaQuery.of(context).size.height * 0.43,
       child: widget.renderList.isEmpty
           ? NoAppointmentsYet()
           : ListView.builder(
+              shrinkWrap: true,
               itemBuilder: (ctx, index) {
                 return AppointmentCard(
                   index,

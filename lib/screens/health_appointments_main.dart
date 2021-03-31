@@ -33,7 +33,31 @@ class _HealthAppointmentsState extends State<HealthAppointments>
       time: TimeOfDay.now(),
     ),
     Appointment(
+      id: 1,
+      type: 'odontologia_general',
+      place: 'HGM',
+      additionalInformation: ':)',
+      date: DateTime.now().add(Duration(days: 11)),
+      time: TimeOfDay.now(),
+    ),
+    Appointment(
       id: 2,
+      type: 'medicina_general',
+      place: 'HPTU',
+      additionalInformation: ':)',
+      date: DateTime.now().add(Duration(hours: 2)),
+      time: TimeOfDay.now(),
+    ),
+    Appointment(
+      id: 3,
+      type: 'odontologia_general',
+      place: 'HGM',
+      additionalInformation: ':)',
+      date: DateTime.now().add(Duration(days: 11)),
+      time: TimeOfDay.now(),
+    ),
+    Appointment(
+      id: 4,
       type: 'odontologia_general',
       place: 'HGM',
       additionalInformation: ':)',
@@ -44,7 +68,7 @@ class _HealthAppointmentsState extends State<HealthAppointments>
   List<Appointment> pastAppointments = [
     //IMPORT
     Appointment(
-      id: 1,
+      id: 5,
       type: 'medicina_general',
       place: 'HGM',
       additionalInformation: ':)',
@@ -52,7 +76,7 @@ class _HealthAppointmentsState extends State<HealthAppointments>
       time: TimeOfDay.now(),
     ),
     Appointment(
-      id: 3,
+      id: 6,
       type: 'odontologia_general',
       place: 'SVF',
       additionalInformation: ':)',
@@ -146,32 +170,42 @@ class _HealthAppointmentsState extends State<HealthAppointments>
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
-              AppButton(
-                btnColor: kDarkBlue,
-                btnBorderColor:
-                    selectedBtn ? kActiveBtnColor : Colors.transparent,
-                title: '+',
-                textColor: Colors.white,
-                onPress: () {
-                  setState(
-                    () {
-                      selectedBtn = true;
-                      playGif('anadir_cita');
-                    },
-                  );
-                },
-                onDoublePress: () {
-                  // Navigator.pushNamed(context, NewAppointment.id);
-                  Navigator.pushNamed(
-                    context,
-                    NewAppointment.id,
-                  );
-                },
-              ),
-              AppointmentList(
-                _deleteAppointment,
-                playGif,
-                renderList,
+              Expanded(
+                child: Column(
+                  children: [
+                    AppButton(
+                      btnColor: kDarkBlue,
+                      btnBorderColor:
+                          selectedBtn ? kActiveBtnColor : Colors.transparent,
+                      title: '+',
+                      textColor: Colors.white,
+                      onPress: () {
+                        setState(
+                          () {
+                            selectedBtn = true;
+                            playGif('anadir_cita');
+                          },
+                        );
+                      },
+                      onDoublePress: () {
+                        setState(
+                          () {
+                            selectedBtn = false;
+                          },
+                        );
+                        Navigator.pushNamed(
+                          context,
+                          NewAppointment.id,
+                        );
+                      },
+                    ),
+                    AppointmentList(
+                      _deleteAppointment,
+                      playGif,
+                      renderList,
+                    ),
+                  ],
+                ),
               ),
               GifAndBtnContainer(
                 controller: controller,

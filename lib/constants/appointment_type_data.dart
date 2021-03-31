@@ -1,4 +1,4 @@
-List<String> types = <String>[
+List<String> appointmentTypes = <String>[
   'Enfermería',
   'Fisioterapia',
   'Fonoaudiología',
