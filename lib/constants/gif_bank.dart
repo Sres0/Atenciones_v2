@@ -34,44 +34,48 @@ class GifBank {
       name: 'enfermeria',
       frames: 21,
     ),
-
-    //OTHERS
     Gif(
-      name: 'contrasenas_no_coinciden',
+      name: 'fisioterapia',
       frames: 31,
     ),
     Gif(
-      name: 'correo',
+      name: 'fonoaudiologia',
       frames: 15,
     ),
     Gif(
-      name: 'departamento',
+      name: 'medicina_especializada',
       frames: 26,
     ),
     Gif(
-      name: 'documento_invalido',
+      name: 'nutricion',
       frames: 24,
     ),
     Gif(
-      name: 'email_invalido',
+      name: 'odontologia_especializada',
       frames: 20,
     ),
     Gif(
-      name: 'eps',
+      name: 'optometria',
       frames: 20,
     ),
     Gif(
-      name: 'fecha_de_nacimiento',
+      name: 'psicologia',
       frames: 20,
     ),
     Gif(
-      name: 'formulario_inscripcion',
+      name: 'quimica_farmaceutica',
       frames: 20,
     ),
     Gif(
-      name: 'guardar_informacion',
+      name: 'terapia_ocupacional',
       frames: 23,
     ),
+    Gif(
+      name: 'terapia_respiratoria',
+      frames: 23,
+    ),
+
+    //OTHERS
     Gif(
       name: 'hombre',
       frames: 16,

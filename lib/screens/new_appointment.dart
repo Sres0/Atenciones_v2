@@ -104,9 +104,9 @@ class _NewAppointmentState extends State<NewAppointment>
       additionalInformationEnabled = true;
     });
 
-    if (placeController.text != null &&
-        typeController.text != null &&
-        dateController != null) {
+    if (placeController.text.isNotEmpty &&
+        typeController.text.isNotEmpty &&
+        dateController.text.isNotEmpty) {
       place = placeController.text;
       type = appointmentNameToType(typeController.text);
       date = DateFormat('yMd').parse(
