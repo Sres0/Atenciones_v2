@@ -1,0 +1,15 @@
+List<String> appointmentTypes = <String>[
+  'Enfermería',
+  'Fisioterapia',
+  'Fonoaudiología',
+  'Medicina especializada',
+  'Medicina general',
+  'Nutrición',
+  'Odontología especializada',
+  'Odontología general',
+  'Optometría',
+  'Psicología',
+  'Química farmacéutica',
+  'Terapia ocupacional',
+  'Terapia respiratoria',
+];
