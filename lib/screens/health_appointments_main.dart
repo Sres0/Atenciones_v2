@@ -150,7 +150,23 @@ class _HealthAppointmentsState extends State<HealthAppointments>
                 controller: controller,
                 gif: gifPath,
                 isVisible: true,
-                onTap: () {},
+                onTap: () {
+                  switch (currentGif) {
+                    case 'anadir_cita':
+                      {
+                        setState(
+                          () {
+                            selectedBtn = false;
+                          },
+                        );
+                        Navigator.pushNamed(
+                          context,
+                          NewAppointment.id,
+                        );
+                      }
+                      break;
+                  }
+                },
               ),
             ],
           ),

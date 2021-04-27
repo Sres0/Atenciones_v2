@@ -74,24 +74,28 @@ class GifBank {
       name: 'terapia_respiratoria',
       frames: 23,
     ),
-
-    //OTHERS
     Gif(
-      name: 'hombre',
+      name: 'elegir_tipo_de_cita',
       frames: 16,
     ),
     Gif(
-      name: 'ingresa_celular_valido',
+      name: 'elegir_fecha_y_hora',
       frames: 27,
     ),
     Gif(
-      name: 'ingresar_contrasena',
+      name: 'digtar_lugar_cita',
+      frames: 15,
+    ),
+    Gif(
+      name: 'digitar_informacion_adicional',
       frames: 31,
     ),
     Gif(
-      name: 'iniciar_sesion',
+      name: 'guardar',
       frames: 19,
     ),
+
+    //OTHERS
     Gif(
       name: 'municipio',
       frames: 21,

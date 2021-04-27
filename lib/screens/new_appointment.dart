@@ -117,7 +117,7 @@ class _NewAppointmentState extends State<NewAppointment>
       additionalInformation = additionalInformationController.text;
 
       final newAppointment = Appointment(
-        id: appointmentId, //CHECK
+        id: appointmentId,
         type: type,
         date: date,
         time: time,
@@ -129,6 +129,7 @@ class _NewAppointmentState extends State<NewAppointment>
       appointmentId++;
 
       //Solo past y present cuando se añade, no "actualiza"
+      // Unificar date y time somehow
       if (date.isAfter(DateTime.now())) {
         presentAppointments.add(newAppointment);
       } else {
@@ -166,11 +167,11 @@ class _NewAppointmentState extends State<NewAppointment>
       appBar: defaultAppBar('Nueva atención', true),
       body: GestureDetector(
         onTap: () {
-          // FocusScopeNode currentFocus = FocusScope.of(context);
-          // if (!currentFocus.hasPrimaryFocus &&
-          //     currentFocus.focusedChild != null) {
-          //   currentFocus.focusedChild.unfocus();
-          // }
+          FocusScopeNode currentFocus = FocusScope.of(context);
+          if (!currentFocus.hasPrimaryFocus &&
+              currentFocus.focusedChild != null) {
+            currentFocus.focusedChild.unfocus();
+          }
           disableAllTextForms();
         },
         child: SafeArea(
@@ -190,7 +191,7 @@ class _NewAppointmentState extends State<NewAppointment>
                               dateEnabled = false;
                               additionalInformationEnabled = false;
                             });
-                            playGif('anadir_cita'); //CHECK
+                            playGif('elegir_tipo_de_cita');
                           },
                           child: FormPicker(
                             hintTxt: 'Tipo de atención',
@@ -204,7 +205,6 @@ class _NewAppointmentState extends State<NewAppointment>
                               setState(() {
                                 typeEnabled = false;
                               });
-                              print(typeController);
                             },
                           ),
                         ),
@@ -219,7 +219,7 @@ class _NewAppointmentState extends State<NewAppointment>
                               dateEnabled = true;
                               additionalInformationEnabled = false;
                             });
-                            playGif('anadir_cita'); //CHECK
+                            playGif('elegir_fecha_y_hora');
                           },
                           child: AppointmentDateAndTime(
                             hintTxt: 'Fecha y hora de la cita',
@@ -246,14 +246,14 @@ class _NewAppointmentState extends State<NewAppointment>
                               dateEnabled = false;
                               additionalInformationEnabled = false;
                             });
-                            playGif('anadir_cita'); //CHECK
+                            playGif('digitar_lugar_cita');
                           },
                           child: TextFormField(
                             onTap: () {
                               setState(() {
                                 isVisible = false;
                               });
-                              playGif('anadir_cita'); //CHECK
+                              playGif('digitar_lugar_cita');
                             },
                             onEditingComplete: () {
                               setState(() {
@@ -291,14 +291,14 @@ class _NewAppointmentState extends State<NewAppointment>
                               dateEnabled = false;
                               additionalInformationEnabled = true;
                             });
-                            playGif('anadir_cita'); //CHECK
+                            playGif('digitar_informacion_adicional');
                           },
                           child: TextFormField(
                             onTap: () {
                               setState(() {
                                 isVisible = false;
                               });
-                              playGif('anadir_cita'); //CHECK
+                              playGif('digitar_informacion_adicional');
                             },
                             onEditingComplete: () {
                               setState(() {
@@ -342,7 +342,7 @@ class _NewAppointmentState extends State<NewAppointment>
                             title: 'Guardar',
                             textColor: Colors.white,
                             onPress: () {
-                              playGif('anadir_cita'); //CHECK
+                              playGif('guardar');
                               setState(() {
                                 disableAllTextForms();
                                 selectedBtn = true;
@@ -359,7 +359,39 @@ class _NewAppointmentState extends State<NewAppointment>
                   controller: controller,
                   gif: gifPath,
                   isVisible: !isKeyboardShowing,
-                  onTap: () {},
+                  onTap: () {
+                    switch (currentGif) {
+                      case 'elegir_tipo_de_cita':
+                        {
+                          typeFocusNode.requestFocus();
+                        }
+                        break;
+
+                      case 'elegir_fecha_y_hora':
+                        {
+                          dateFocusNode.requestFocus();
+                        }
+                        break;
+
+                      case 'digitar_lugar_cita':
+                        {
+                          placeFocusNode.requestFocus();
+                        }
+                        break;
+
+                      case 'digitar_informacion_adicional':
+                        {
+                          additionalInformationFocusNode.requestFocus();
+                        }
+                        break;
+
+                      case 'guardar':
+                        {
+                          saveNewAppointment();
+                        }
+                        break;
+                    }
+                  },
                 ),
               ],
             ),
