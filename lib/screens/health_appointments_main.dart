@@ -11,6 +11,7 @@ import 'package:atenciones_v2/components/gif_and_btn_container.dart';
 import 'package:atenciones_v2/components/app_button.dart';
 import 'package:atenciones_v2/helpers/default_appbar.dart';
 import 'package:atenciones_v2/screens/new_appointment.dart';
+// import 'package:atenciones_v2/screens/practice.dart';
 
 class HealthAppointments extends StatefulWidget {
   static const id = 'health_appointments_main';
@@ -23,7 +24,9 @@ class _HealthAppointmentsState extends State<HealthAppointments>
     with TickerProviderStateMixin {
   int _bottomNavigationIndex = 0;
 
-  List<Appointment> renderList = [];
+  Function proceed = () {};
+
+  List<Appointment> renderList;
 
   String currentGif = 'citas_pendientes';
   String gifPath = '';
@@ -33,7 +36,7 @@ class _HealthAppointmentsState extends State<HealthAppointments>
 
   @override
   void initState() {
-    renderList = presentAppointments; //WEIRD
+    renderList = presentAppointments;
 
     controller = GifController(vsync: this);
     playGif(currentGif);
@@ -78,7 +81,6 @@ class _HealthAppointmentsState extends State<HealthAppointments>
       pastAppointments.removeWhere((appointment) => appointment.id == id);
       presentAppointments.removeWhere((appointment) => appointment.id == id);
     });
-    // return;
   }
 
   @override
@@ -119,12 +121,13 @@ class _HealthAppointmentsState extends State<HealthAppointments>
                       title: '+',
                       textColor: Colors.white,
                       onPress: () {
-                        setState(
-                          () {
-                            selectedBtn = true;
-                            playGif('anadir_cita');
-                          },
-                        );
+                        setState(() {
+                          selectedBtn = true;
+                          playGif('anadir_cita');
+                          proceed = () {
+                            Navigator.pushNamed(context, NewAppointment.id);
+                          };
+                        });
                       },
                       onDoublePress: () {
                         setState(
@@ -132,16 +135,14 @@ class _HealthAppointmentsState extends State<HealthAppointments>
                             selectedBtn = false;
                           },
                         );
-                        Navigator.pushNamed(
-                          context,
-                          NewAppointment.id,
-                        );
+                        Navigator.pushNamed(context, NewAppointment.id);
                       },
                     ),
                     AppointmentList(
                       _deleteAppointment,
                       playGif,
                       renderList,
+                      proceed,
                     ),
                   ],
                 ),
@@ -150,23 +151,7 @@ class _HealthAppointmentsState extends State<HealthAppointments>
                 controller: controller,
                 gif: gifPath,
                 isVisible: true,
-                onTap: () {
-                  switch (currentGif) {
-                    case 'anadir_cita':
-                      {
-                        setState(
-                          () {
-                            selectedBtn = false;
-                          },
-                        );
-                        Navigator.pushNamed(
-                          context,
-                          NewAppointment.id,
-                        );
-                      }
-                      break;
-                  }
-                },
+                onTap: proceed,
               ),
             ],
           ),
