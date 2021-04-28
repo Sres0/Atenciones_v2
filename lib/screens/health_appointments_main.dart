@@ -11,6 +11,7 @@ import 'package:atenciones_v2/components/gif_and_btn_container.dart';
 import 'package:atenciones_v2/components/app_button.dart';
 import 'package:atenciones_v2/helpers/default_appbar.dart';
 import 'package:atenciones_v2/screens/new_appointment.dart';
+import 'package:atenciones_v2/screens/individual_appointment.dart';
 // import 'package:atenciones_v2/screens/practice.dart';
 
 class HealthAppointments extends StatefulWidget {
@@ -36,10 +37,16 @@ class _HealthAppointmentsState extends State<HealthAppointments>
 
   @override
   void initState() {
-    renderList = presentAppointments;
-
     controller = GifController(vsync: this);
     playGif(currentGif);
+    presentAppointments.forEach((element) {
+      print('elemento');
+      if (element.date.isBefore(DateTime.now())) {
+        presentAppointments.remove(element);
+        pastAppointments.add(element);
+      }
+    });
+    renderList = presentAppointments;
     super.initState();
   }
 
@@ -83,6 +90,24 @@ class _HealthAppointmentsState extends State<HealthAppointments>
     });
   }
 
+  void viewAppointment(Appointment appointment) {
+    proceed = () {
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => IndividualAppointment(appointment: appointment),
+        ),
+      );
+    };
+  }
+
+  void reloadLists(
+    List<Appointment> presentAppointments,
+    List<Appointment> pastAppointments,
+  ) {
+    setState(() {});
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -124,10 +149,10 @@ class _HealthAppointmentsState extends State<HealthAppointments>
                         setState(() {
                           selectedBtn = true;
                           playGif('anadir_cita');
-                          proceed = () {
-                            Navigator.pushNamed(context, NewAppointment.id);
-                          };
                         });
+                        proceed = () {
+                          Navigator.pushNamed(context, NewAppointment.id);
+                        };
                       },
                       onDoublePress: () {
                         setState(
@@ -142,7 +167,7 @@ class _HealthAppointmentsState extends State<HealthAppointments>
                       _deleteAppointment,
                       playGif,
                       renderList,
-                      proceed,
+                      viewAppointment,
                     ),
                   ],
                 ),

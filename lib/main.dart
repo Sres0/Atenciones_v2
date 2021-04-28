@@ -1,3 +1,4 @@
+import 'package:atenciones_v2/screens/individual_appointment.dart';
 import 'package:flutter/material.dart';
 
 // import 'package:atenciones_v2/constants/constants.dart';
@@ -20,6 +21,7 @@ class LSCApp extends StatelessWidget {
         MainScreen.id: (context) => MainScreen(),
         HealthAppointments.id: (context) => HealthAppointments(),
         NewAppointment.id: (context) => NewAppointment(),
+        IndividualAppointment.id: (context) => IndividualAppointment(),
       },
     );
   }
